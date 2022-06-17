@@ -1,3 +1,5 @@
+package funcionario;
+
 public class Terceirizado extends Funcionario {
     private Double valorDespesa;
 

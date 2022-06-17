@@ -1,3 +1,5 @@
+package funcionario;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -15,7 +17,7 @@ public class Main {
         int quantidadeFuncionarios = scanner.nextInt();
 
         for (int i = 0; i < quantidadeFuncionarios; i++) {
-            System.out.print("Funcionario é terceirizado? ");
+            System.out.print("funcionario.Funcionario é terceirizado? ");
             char tipo = scanner.next().charAt(0);
 
             System.out.print("Informe o nome do funcionario: ");
