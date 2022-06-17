@@ -1,8 +1,5 @@
 package post_comment;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
