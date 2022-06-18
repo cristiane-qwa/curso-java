@@ -1,5 +1,6 @@
 package exercicio_fixacao_pedido;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +10,9 @@ public class Order {
     private OrderStatus status;
     private Client client;
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    private SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    private SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
 
     public Order(Date date, OrderStatus status, Client client, List<OrderItem> orderItems) {
         this.date = date;
@@ -62,14 +66,21 @@ public class Order {
         }
         return total;
     }
-
     @Override
     public String toString() {
-        return "Order{" +
-                "date=" + date +
-                ", status=" + status +
-                ", client=" + client.getName() +
-                ", orderItems=" + orderItems.toString() +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("ORDER SUMMARY:" );
+        stringBuilder.append("\nOrder moment: " + sdf1.format(date));
+        stringBuilder.append("\nOrder status: " + status);
+        stringBuilder.append("\nClient: " + client.getName() + " " + sdf2.format(client.getBirthDate()) + " " + client.getEmail());
+        stringBuilder.append("\norder items: \n");
+        for(OrderItem item : orderItems) {
+            stringBuilder.append(item.getProduct().getName() +" R$ "+ String.format("%.2f",item.getPrice()) + ", Quantity: " + item.getQuantity() + ", Subtotal: R$ " + String.format("%.2f", item.subTotal()) + '\n');
+        }
+        stringBuilder.append("Total price: R$ " + String.format("%.2f",total()));
+        return stringBuilder.toString();
+
+
+
     }
 }
