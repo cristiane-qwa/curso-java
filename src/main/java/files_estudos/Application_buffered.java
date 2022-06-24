@@ -6,13 +6,9 @@ import java.io.IOException;
 
 public class Application_buffered {
     public static void main(String[] args) {
-        String path = "src/main/java/files_estudos/file.txt";
-        FileReader fileReader = null;
-        BufferedReader bufferedReader = null;
+        String path = "C:\\Users\\cristiane.andrade\\Documents\\testando-files\\tres.csv";
 
-        try {
-            fileReader = new FileReader(path);
-            bufferedReader = new BufferedReader(fileReader);
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
             String line = bufferedReader.readLine();
 
             while (line != null) {
@@ -22,19 +18,6 @@ public class Application_buffered {
         }
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
-        }
-        finally {
-            try {
-                if (bufferedReader != null) {
-                    bufferedReader.close();
-                }
-                if (fileReader != null) {
-                    fileReader.close();
-                }
-            }
-            catch (IOException e) {
-                System.out.println(e.getStackTrace());
-            }
         }
     }
 }
